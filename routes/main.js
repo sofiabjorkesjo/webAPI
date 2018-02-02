@@ -3,8 +3,7 @@
 let router = require('express').Router();
 let cakeSchema = require('../model/cakeModel');
 
-router.get('/', function(req, res) {
-    
+router.get('/', function(req, res) {  
     cakeSchema.find({}, function(err, result) {
         console.log('m');
         if (err) {
@@ -13,28 +12,24 @@ router.get('/', function(req, res) {
             res.json(result);
         }
     });
-    res.send('hej');
-    console.log('hej');
 })
-.post(function(req, res) {
+.post('/', function(req, res) {
+    console.log('postar');
     let cake = new cakeSchema({
-        sortOfCake: 'prinsesstårta',
-        baker: 'Sofia',
-        sizeOfCake: 'small',
+        sortOfCake: 'marrängtårta',
+        baker: 'sofia',
+        sizeOfCake: 'stor',
         date: new Date,
         imageURL: 'test',
-        ingredients: 'mjöl, socker'
+        ingredients: 'marränger'
     });
     cake.save(function(err, result) {
         if(err) {
-            console.log('feel');
             res.send(err);
         } else {
-            console.log('sparas');
             res.json(result);
-        }
-        
+        }     
     })
-})
+});
 
 module.exports = router;
