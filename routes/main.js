@@ -5,7 +5,6 @@ let cakeSchema = require('../model/cakeModel');
 
 router.get('/', function(req, res) {  
     cakeSchema.find({}, function(err, result) {
-        console.log('m');
         if (err) {
             res.send(err);
         } else {
@@ -16,12 +15,12 @@ router.get('/', function(req, res) {
 .post('/', function(req, res) {
     console.log('postar');
     let cake = new cakeSchema({
-        sortOfCake: 'marrängtårta',
+        sortOfCake: 'chokladtårta',
         baker: 'sofia',
         sizeOfCake: 'stor',
         date: new Date,
         imageURL: 'test',
-        ingredients: 'marränger'
+        ingredients: 'marränger, choklad'
     });
     cake.save(function(err, result) {
         if(err) {

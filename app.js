@@ -4,7 +4,6 @@ let express = require('express');
 let database = require('./config/database');
 let app = express();
 let port = process.env.PORT || 8000;
-let model = require('./model/cakeModel');
 
 database();
 
