@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
     });
 })
 .post('/', function(req, res) {
-    console.log('postar');
     let cake = new cakeSchema({
         sortOfCake: 'chokladtårta',
         baker: 'sofia',
@@ -30,5 +29,26 @@ router.get('/', function(req, res) {
         }     
     })
 });
+
+router.get('/update', function(req, res) {
+    cakeSchema.findOneAndUpdate({_id: "5a747642376ec2fc3d5d3ed1"}, {baker: 'hej'}, function(err, cake) {
+        console.log('test');
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(cake);
+        }
+    });
+});
+
+router.get('/delete', function(req, res) {
+    cakeSchema.findOneAndRemove({_id: "5a7aba4df7840031dad59cab"}, function(err, cake) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send('cake deleted');
+        }
+    })
+})
 
 module.exports = router;
