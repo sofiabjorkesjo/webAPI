@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
 
 router.put('/:cakeId', function(req, res) {
     cakeSchema.findOneAndUpdate({_id: req.params.cakeId}, {baker: 'hej'}, function(err, cake) {
-        if (err) {
+        if(err) {
             res.send(err);
         } else {
             res.json(cake);
@@ -42,12 +42,42 @@ router.put('/:cakeId', function(req, res) {
 
 router.delete('/:cakeId', function(req, res) {
     cakeSchema.findOneAndRemove({_id: req.params.cakeId}, function(err, cake) {
-        if (err) {
+        if(err) {
             res.send(err);
         } else {
             res.send(cake);
         }
-    })
-})
+    });
+});
 
+router.get('/cakes', function(req, res) {
+    cakeSchema.find({}, function(err, cakes) {
+        if(err) {
+            res.send(err);
+        } else {
+            let cakeMap = [];
+            cakes.forEach(function(cake) {
+                let sort = cake.sortOfCake;
+                let link = 'http://localhost:8000/cakes/' + cake._id;
+                let obj = {
+                    'sortOfCake': sort,
+                    'more information': link
+                };
+                cakeMap.push(obj);
+            });
+            res.send(cakeMap);
+
+        }
+    });
+});
+
+router.get('/cakes/:cakeId', function(req, res) {
+    cakeSchema.find({_id: req.params.cakeId}, function(err, information) {
+        if(err) {
+            res.send(err);
+        } else {
+            res.send(information);
+        }
+    });
+});
 module.exports = router;
