@@ -6,7 +6,7 @@ let cakeSchema = new mongoose.Schema({
     sortOfCake: {type: String},
     baker: {type: String},
     sizeOfCake: {type: String},
-    date: {type: Date},
+    date: {type: String},
     imageURL: {type: String},
     ingredients: {type: String}
 });
