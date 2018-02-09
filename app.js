@@ -7,15 +7,18 @@ let passport = require('passport');
 let User = require('./model/user');
 let strategy = require('passport-github').Strategy;
 let findOrCreate = require('mongoose-find-or-create');
-let userData = require('./userData');
+let env = require('env2')('.env');
+
 
 let port = process.env.PORT || 8000;
 
 database();
 
+
+
 passport.use(new strategy({
-    clientID: userData.clientID(),
-    clientSecret: userData.clientSecret(),
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: 'http://localhost:8000/auth/github/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
