@@ -35,12 +35,15 @@ passport.deserializeUser(function(obj, cb) {
 
 let app = express();
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes/main'));
+
+
 
 
 app.listen(port, function(){

@@ -19,6 +19,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "mongoose": "^5.0.3",
     "mongoose-find-or-create": "^1.3.1",
     "passport": "^0.4.0",

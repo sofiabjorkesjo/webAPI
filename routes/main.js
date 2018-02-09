@@ -3,6 +3,7 @@
 let router = require('express').Router();
 let passport = require('passport');
 let cakeSchema = require('../model/cakeModel');
+let loggedIn = false;
 
 router.get('/', function(req, res) {   
     let links = {
@@ -68,10 +69,6 @@ router.delete('/:cakeId', function(req, res) {
     });
 });
 
-router.get('/test', function(req, res) {
-    res.send('aaaaa');
-});
-
 router.get('/cakes', function(req, res) {
     cakeSchema.find({}, function(err, cakes) {
         if(err) {
@@ -105,8 +102,7 @@ router.get('/cakes/:cakeId', function(req, res) {
 });
 
 router.get('/bakers', function(req, res) {
-    let loggedIn = false;
-    if(loggedIn == false) {
+    if(loggedIn === false) {
         let obj = {
             'message': 'You need to be logged in',
             'link': 'http://localhost:8000/auth/github'
@@ -140,6 +136,7 @@ router.get('/bakers', function(req, res) {
 router.get('/auth/github', passport.authenticate('github'));
 
 router.get('/auth/github/callback', passport.authenticate('github', {failureRedirect: '/'}), function(req, res){
+    loggedIn = true;
     res.redirect('/bakers')
 })
 
