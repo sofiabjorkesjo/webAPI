@@ -7,14 +7,15 @@ let passport = require('passport');
 let User = require('./model/user');
 let strategy = require('passport-github').Strategy;
 let findOrCreate = require('mongoose-find-or-create');
+let userData = require('./userData');
 
 let port = process.env.PORT || 8000;
 
 database();
 
 passport.use(new strategy({
-    clientID: '652a09d348bfcb785d22',
-    clientSecret: '590771089aca014915253aee8414d8ece68720d7',
+    clientID: userData.clientID(),
+    clientSecret: userData.clientSecret(),
     callbackURL: 'http://localhost:8000/auth/github/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -35,16 +36,12 @@ passport.deserializeUser(function(obj, cb) {
 
 let app = express();
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes/main'));
-
-
-
 
 app.listen(port, function(){
     console.log('listen on port ' + port);
