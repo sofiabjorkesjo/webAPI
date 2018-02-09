@@ -8,13 +8,12 @@ let User = require('./model/user');
 let strategy = require('passport-github').Strategy;
 let findOrCreate = require('mongoose-find-or-create');
 let env = require('env2')('.env');
+let WebHooks = require('node-webhooks');
 
 
 let port = process.env.PORT || 8000;
 
 database();
-
-
 
 passport.use(new strategy({
     clientID: process.env.CLIENT_ID,
@@ -45,6 +44,18 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes/main'));
+
+let webHooks = new WebHooks({
+    db: './webhooks.json'
+})
+
+webHooks.add('hej', 'http://localhost:8000/cakes/').then(function() {
+    console.log('hehehhehejjjj');
+}).catch(function(err) {
+    console.log(err);
+});
+
+webHooks.trigger('hej', {data: 222});
 
 app.listen(port, function(){
     console.log('listen on port ' + port);

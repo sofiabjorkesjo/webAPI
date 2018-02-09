@@ -3,6 +3,7 @@
 let router = require('express').Router();
 let passport = require('passport');
 let cakeSchema = require('../model/cakeModel');
+let webHooks = require('node-webhooks');
 let loggedIn = false;
 
 router.get('/', function(req, res) {   
@@ -122,15 +123,12 @@ router.get('/bakers', function(req, res) {
                         'baker': baker,
                         'All the bakers cakes': link
                     };
-    
                     bakersMap.push(info); 
                 })
-    
                 res.send(bakersMap);
             }
         })
-    }
-    
+    }   
 });
 
 router.get('/auth/github', passport.authenticate('github'));
