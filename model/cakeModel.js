@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 let cakeSchema = new mongoose.Schema({
     sortOfCake: {type: String},
     baker: {type: String},
+    aboutBaker: {type: String},
     sizeOfCake: {type: String},
     date: {type: String},
     imageURL: {type: String},

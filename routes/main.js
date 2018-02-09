@@ -1,6 +1,7 @@
 'use strict';
 
 let router = require('express').Router();
+let passport = require('passport');
 let cakeSchema = require('../model/cakeModel');
 
 router.get('/', function(req, res) {   
@@ -15,6 +16,7 @@ router.get('/', function(req, res) {
     let cake = new cakeSchema({
         sortOfCake: req.body[0].sortOfCake,
         baker: req.body[0].baker,
+        aboutBaker: req.body[0].aboutBaker,
         sizeOfCake: req.body[0].sizeOfCake,
         date: req.body[0].date,
         imageURL: req.body[0].imageURL,
@@ -29,15 +31,15 @@ router.get('/', function(req, res) {
     })
 });
 
-router.get('/:cakeId', function(req, res) {
-    cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
-        if(err) {
-            res.send(err);
-        } else {
-            res.json(cake);
-        }
-    });
-});
+// router.get('/:cakeId', function(req, res) {
+//     cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
+//         if(err) {
+//             res.send(err);
+//         } else {
+//             res.json(cake);
+//         }
+//     });
+// });
 
 router.put('/:cakeId', function(req, res) {
     cakeSchema.findOneAndUpdate({_id: req.params.cakeId},
@@ -66,6 +68,10 @@ router.delete('/:cakeId', function(req, res) {
     });
 });
 
+router.get('/test', function(req, res) {
+    res.send('aaaaa');
+});
+
 router.get('/cakes', function(req, res) {
     cakeSchema.find({}, function(err, cakes) {
         if(err) {
@@ -85,6 +91,7 @@ router.get('/cakes', function(req, res) {
 
         }
     });
+
 });
 
 router.get('/cakes/:cakeId', function(req, res) {
@@ -98,41 +105,44 @@ router.get('/cakes/:cakeId', function(req, res) {
 });
 
 router.get('/bakers', function(req, res) {
-    cakeSchema.find({}, function(err, bakers) {
-        if(err) {
-            res.send(err);
-        } else {
-            let bakersMap = [];
-            bakers.forEach(function(obj){       
-                let baker = obj.baker;
-                let link = 'http://localhost:8000/bakers/' + obj.baker;
-
-                let info = {
-                    'baker': baker,
-                    'All the bakers cakes': link
-                };
-
-                bakersMap.push(info); 
-            })
-            let test = [];
-
-            // for(let i = 0; i < bakersMap.length; i++) {
-            //     for(let j = 0; j <= test.length; j++) {
-            //         if(test.length == 0){
-            //             test.push(bakersMap[i]); 
-            //         } 
-            //         if(bakersMap[i].baker == test[j].baker) {
-            //             console.log('sssss');
-            //         } else {
-            //             test.push(bakersMap[i]);
-            //         }
-            //     }
-                
-            // }
-            res.send(bakersMap);
-        }
-    })
+    let loggedIn = false;
+    if(loggedIn == false) {
+        let obj = {
+            'message': 'You need to be logged in',
+            'link': 'http://localhost:8000/auth/github'
+        };
+        res.send(obj);
+    } else {
+        cakeSchema.find({}, function(err, bakers) {
+            if(err) {
+                res.send(err);
+            } else {
+                let bakersMap = [];
+                bakers.forEach(function(obj){       
+                    let baker = obj.baker;
+                    let link = 'http://localhost:8000/bakers/' + obj.baker;
+            
+                    let info = {
+                        'baker': baker,
+                        'All the bakers cakes': link
+                    };
+    
+                    bakersMap.push(info); 
+                })
+    
+                res.send(bakersMap);
+            }
+        })
+    }
+    
 });
+
+router.get('/auth/github', passport.authenticate('github'));
+
+router.get('/auth/github/callback', passport.authenticate('github', {failureRedirect: '/'}), function(req, res){
+    res.redirect('/bakers')
+})
+
 
 router.get('/bakers/:bakerName/', function(req, res) {
     cakeSchema.find({baker: req.params.bakerName}, function(err, information) {
@@ -141,7 +151,6 @@ router.get('/bakers/:bakerName/', function(req, res) {
         } else {
             let allCakes = [];
             information.forEach(function(cake) {
-                console.log(cake.sortOfCake);
                 let result = {
                     'baker': cake.baker,
                     'cake': cake.sortOfCake
