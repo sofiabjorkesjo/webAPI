@@ -12,7 +12,8 @@ router.get('/', function(req, res) {
         'All bakers': 'http://localhost:8000/bakers'
     };
 
-    res.send(links);
+    res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(links, null, 4));
 
 }).post('/', function(req, res) {
     let cake = new cakeSchema({
@@ -55,7 +56,8 @@ router.put('/:cakeId', function(req, res) {
         if(err) {
             res.send(err);
         } else {
-            res.json(cake);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(cake, null, 4));
         }
     });
 });
@@ -65,7 +67,8 @@ router.delete('/:cakeId', function(req, res) {
         if(err) {
             res.send(err);
         } else {
-            res.send(cake);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(cake, null, 4));
         }
     });
 });
@@ -85,7 +88,8 @@ router.get('/cakes', function(req, res) {
                 };
                 cakeMap.push(obj);
             });
-            res.send(cakeMap);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(cakeMap, null, 4));
 
         }
     });
@@ -97,7 +101,8 @@ router.get('/cakes/:cakeId', function(req, res) {
         if(err) {
             res.send(err);
         } else {
-            res.send(information);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(information, null, 4));
         }
     });
 });
@@ -108,7 +113,8 @@ router.get('/bakers', function(req, res) {
             'message': 'You need to be logged in',
             'link': 'http://localhost:8000/auth/github'
         };
-        res.send(obj);
+        res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(obj, null, 4));
     } else {
         cakeSchema.find({}, function(err, bakers) {
             if(err) {
@@ -118,14 +124,17 @@ router.get('/bakers', function(req, res) {
                 bakers.forEach(function(obj){       
                     let baker = obj.baker;
                     let link = 'http://localhost:8000/bakers/' + obj.baker;
+                    let logOutLink = 'http://localhost:8000/logOut';
             
                     let info = {
                         'baker': baker,
-                        'All the bakers cakes': link
+                        'All the bakers cakes': link,
+                        'logout': logOutLink
                     };
                     bakersMap.push(info); 
                 })
-                res.send(bakersMap);
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify(bakersMap, null, 4));
             }
         })
     }   
@@ -136,6 +145,12 @@ router.get('/auth/github', passport.authenticate('github'));
 router.get('/auth/github/callback', passport.authenticate('github', {failureRedirect: '/'}), function(req, res){
     loggedIn = true;
     res.redirect('/bakers')
+});
+
+router.get('/logOut', function(req, res) {
+    req.logout();
+    loggedIn = false;
+    res.send({'message': 'logged out!'});
 })
 
 
@@ -153,8 +168,10 @@ router.get('/bakers/:bakerName/', function(req, res) {
                
                 allCakes.push(result);
             });
-            res.send(allCakes);
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(allCakes, null, 4));
         }
     });
 });
+
 module.exports = router;

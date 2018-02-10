@@ -1,7 +1,9 @@
 'use strict';
 
 let express = require('express');
+let path = require('path');
 let database = require('./config/database');
+let session = require('express-session');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 let User = require('./model/user');
@@ -32,22 +34,39 @@ passport.serializeUser(function(user, cb) {
     cb(null, user);
   });
 
-passport.deserializeUser(function(obj, cb) {
-    cb(null, obj);
+passport.deserializeUser(function(id, cb) {
+    User.findById(id, function(err, user) {
+        console.log('test');
+        cb(err, user)
+    })
 });
 
 let app = express();
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 app.use(bodyParser.json());
+app.use(require('cookie-parser')());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({
+    name:   "theserversession",
+    secret: "K7smsx9MsEasad89wEzVp5EeCep5s",
+    resave: true, 
+    saveUninitialized: true, 
+    cookie: {
+        httpOnly: true,
+        maxAge: 5
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', require('./routes/main'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 let webHooks = new WebHooks({
     db: './webhooks.json'
-})
+});
 
 webHooks.add('hej', 'http://localhost:8000/cakes/').then(function() {
     console.log('hehehhehejjjj');
@@ -60,3 +79,4 @@ webHooks.trigger('hej', {data: 222});
 app.listen(port, function(){
     console.log('listen on port ' + port);
 });
+
