@@ -3,16 +3,11 @@
 let router = require('express').Router();
 let passport = require('passport');
 let cakeSchema = require('../model/cakeModel');
-let WebHooks = require('node-webhooks');
 let loggedIn = false;
-let webhook2 = false;
 let webhook = require('../model/webhookModel');
-let http = require('http');
 let events = require('events');
 let eventEmitter = new events.EventEmitter();
-// let webHooks = new WebHooks({
-//     db: './webHooksDB.json'
-// });
+
 
 
 router.get('/', function(req, res) {   
@@ -20,7 +15,6 @@ router.get('/', function(req, res) {
         'All cakes': 'http://localhost:8000/cakes' ,
         'All bakers': 'http://localhost:8000/bakers'
     };
-
     res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(links, null, 4));
 
@@ -38,29 +32,17 @@ router.get('/', function(req, res) {
         if(err) {
             res.send(err);
         } else {
-           // webHooks.trigger('post', {data: cake}); 
-            //if(webhook2 == true) {
-                console.log('dfs');
+            if(loggedIn == true) {
                 eventEmitter.emit('new', cake);
-          
-                
-            //}
+            }
+            
             res.send(result);
         }
     })
 });
 
 
-// let webHooks = new WebHooks({
-//     db: './webHooksDB.json'
-// });
-// webHooks.add('post', 'http://localhost:8000/').then(function() {
-// console.log('hehehhehejjjj');
 
-// }).catch(function(err) {
-// console.log(err);
-// });
-// webHooks.trigger('post', {data: cake});   
 
 // router.get('/:cakeId', function(req, res) {
 //     cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
@@ -152,18 +134,17 @@ router.get('/bakers', function(req, res) {
 
                 let links = {
                     'Log out': 'http://localhost:8000/logOut',
-                    'webhook': 'http://localhost:8000/webhook'
+                    'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook'
                 }
                 bakersMap.push(links);
                 bakers.forEach(function(obj){       
                     let baker = obj.baker;
                     let link = 'http://localhost:8000/bakers/' + obj.baker;
-                    let logOutLink = 'http://localhost:8000/logOut';
+                   
             
                     let info = {
                         'baker': baker,
-                        'All the bakers cakes': link,
-                        'logout': logOutLink
+                        'All the bakers cakes': link
                     };
                     bakersMap.push(info); 
                 })
@@ -208,20 +189,8 @@ router.get('/bakers/:bakerName/', function(req, res) {
     });
 });
 
-router.get('/webhook', function(req, res) {
-    
-    // webHooks.add('post', 'http://localhost:8000/').then(function() {
-    // console.log('hehehhehejjjj');
 
-    // }).catch(function(err) {
-    // console.log(err);
-    // });
-    
-    res.send('hej');
-    
-});
-
-router.post('/webhook', function gg (req, res) {
+router.post('/webhook', function (req, res) {
     let Webhook = new webhook({
         url: req.body[0].url
     });
@@ -233,24 +202,32 @@ router.post('/webhook', function gg (req, res) {
             res.send(result);
         }
     });
-    webhook2 = true;
-    // eventEmitter.on('new', function(data) {
-    //     console.log('ddds');
-    //     console.log(data);
-    // });
+
+
 });
 
-router.get('/test', function(req, res) {
-    console.log('ssssadad');
-    eventEmitter.on('new', function(data) {
-        console.log('ddds');
-        console.log(data);
-        res.send(data);
+router.get('/:userURL', function(req, res) {
+    webhook.findOne({url: req.params.userURL}, function(err) {
+        if(err) {
+            res.send(err);
+        } else {
+            eventEmitter.on('new', function(data) {
+                let info = [];
+                let obj = {
+                    message: 'One new cake has been post',
+                    sortOfCake: data.sortOfCake,
+                    baker: data.baker,
+                    sizeOfCake: data.sizeOfCake,
+                    date: data.date,
+                    imageURL: data.imageURL,
+                    ingredients: data.ingredients
+                }
+                info.push(obj);
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify(info, null, 4));
+            });
+        } 
     });
-    //eventEmitter.emit('test');
-   // res.send('hallå');
-})
-
-
+});
 
 module.exports = router;
