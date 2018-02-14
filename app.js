@@ -11,6 +11,8 @@ let strategy = require('passport-github').Strategy;
 let findOrCreate = require('mongoose-find-or-create');
 let env = require('env2')('.env');
 let WebHooks = require('node-webhooks');
+let events = require('events');
+let eventEmitter = new events.EventEmitter();
 
 
 let port = process.env.PORT || 8000;
@@ -43,38 +45,31 @@ passport.deserializeUser(function(id, cb) {
 
 let app = express();
 
-
-
-app.use(bodyParser.json());
-app.use(require('cookie-parser')());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({
-    name:   "theserversession",
-    secret: "K7smsx9MsEasad89wEzVp5EeCep5s",
-    resave: true, 
-    saveUninitialized: true, 
-    cookie: {
-        httpOnly: true,
-        maxAge: 5
-    }
-}));
-
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes/main'));
-app.use(express.static(path.join(__dirname, 'public')));
 
-let webHooks = new WebHooks({
-    db: './webhooks.json'
-});
 
-webHooks.add('hej', 'http://localhost:8000/cakes/').then(function() {
-    console.log('hehehhehejjjj');
-}).catch(function(err) {
-    console.log(err);
-});
 
-webHooks.trigger('hej', {data: 222});
+let test = function() {
+    console.log('ff');
+}
+
+eventEmitter.on('test', test);
+eventEmitter.emit('test');
+
+// var emitter = webHooks.getEmitter();
+
+// emitter.on('*.success', function (hej, statusCode, body) {
+//     console.log('Success on trigger webHook ' + hej + ' with status code', statusCode, 'and body', body)
+// })
+ 
+// emitter.on('*.failure', function (hej, statusCode, body) {
+//     console.error('Error on trigger webHook ' + hej + 'with status code ', statusCode, 'and body', body)
+// })
 
 app.listen(port, function(){
     console.log('listen on port ' + port);
