@@ -165,7 +165,17 @@ router.get('/auth/github/callback', passport.authenticate('github', {failureRedi
 router.get('/logOut', function(req, res) {
     req.logout();
     loggedIn = false;
-    res.send({'message': 'logged out!'});
+    let info = [];
+    let message = {
+        'message': 'logged out!'
+    }
+    let link = {
+        'Start': 'http://localhost:8000/'
+    }
+    info.push(message);
+    info.push(link);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(info, null, 4));
 })
 
 
