@@ -42,18 +42,6 @@ router.get('/', function(req, res) {
 });
 
 
-
-
-// router.get('/:cakeId', function(req, res) {
-//     cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
-//         if(err) {
-//             res.send(err);
-//         } else {
-//             res.json(cake);
-//         }
-//     });
-// });
-
 router.put('/:cakeId', function(req, res) {
     cakeSchema.findOneAndUpdate({_id: req.params.cakeId},
         {sortOfCake: req.body[0].sortOfCake,
@@ -126,10 +114,24 @@ router.get('/bakers', function(req, res) {
         res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(obj, null, 4));
     } else {
-        cakeSchema.find({}, function(err, bakers) {
+        cakeSchema.find({}, function(err, obj) {
             if(err) {
                 res.send(err);
             } else {
+                var bakers = [];
+
+                function remove_duplicates(arr) {
+                    var obj = {};
+                    bakers = [];
+                    for (var i = 0; i < arr.length; i++) {
+                        obj[arr[i].baker] = true;
+                    }
+                    for (var key in obj) {
+                        bakers.push(key);
+                    }
+                    return bakers;
+                }
+                remove_duplicates(obj);
                 let bakersMap = [];
 
                 let links = {
@@ -137,17 +139,15 @@ router.get('/bakers', function(req, res) {
                     'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook'
                 }
                 bakersMap.push(links);
-                bakers.forEach(function(obj){       
-                    let baker = obj.baker;
-                    let link = 'http://localhost:8000/bakers/' + obj.baker;
-                   
-            
+
+                bakers.forEach(function(name) {
                     let info = {
-                        'baker': baker,
-                        'All the bakers cakes': link
-                    };
-                    bakersMap.push(info); 
-                })
+                        'Baker': name,
+                        'All the bakers cakes': 'http://localhost:8000/bakers/' + name
+                    }
+                    bakersMap.push(info);
+                });
+   
                 res.setHeader('Content-Type', 'application/json');
                 res.send(JSON.stringify(bakersMap, null, 4));
             }
@@ -214,6 +214,17 @@ router.post('/webhook', function (req, res) {
     });
 
 
+});
+
+router.get('/:cakeId', function(req, res) {
+    cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
+        if(err) {
+            res.send(err);
+        } else {
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(cake, null, 4));
+        }
+    });
 });
 
 router.get('/:userURL', function(req, res) {
