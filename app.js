@@ -10,10 +10,8 @@ let User = require('./model/user');
 let strategy = require('passport-github').Strategy;
 let findOrCreate = require('mongoose-find-or-create');
 let env = require('env2')('.env');
-let WebHooks = require('node-webhooks');
 let events = require('events');
 let eventEmitter = new events.EventEmitter();
-
 
 let port = process.env.PORT || 8000;
 
@@ -29,7 +27,6 @@ passport.use(new strategy({
         return cb(err, user);
     });
   }
-
  ));
 
 passport.serializeUser(function(user, cb) {
@@ -51,8 +48,6 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', require('./routes/main'));
-
-
 
 app.listen(port, function(){
     console.log('listen on port ' + port);

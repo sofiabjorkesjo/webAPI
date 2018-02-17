@@ -3,12 +3,10 @@
 let router = require('express').Router();
 let passport = require('passport');
 let cakeSchema = require('../model/cakeModel');
-let loggedIn = false;
 let webhook = require('../model/webhookModel');
 let events = require('events');
+let loggedIn = false;
 let eventEmitter = new events.EventEmitter();
-
-
 
 router.get('/', function(req, res) {   
     let links = {
@@ -16,7 +14,7 @@ router.get('/', function(req, res) {
         'All bakers': 'http://localhost:8000/bakers'
     };
     res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(links, null, 4));
+    res.send(JSON.stringify(links, null, 4));
 
 }).post('/', function test(req, res) {
     let cake = new cakeSchema({
@@ -34,13 +32,11 @@ router.get('/', function(req, res) {
         } else {
             if(loggedIn == true) {
                 eventEmitter.emit('new', cake);
-            }
-            
+            }     
             res.send(result);
         }
     })
 });
-
 
 router.put('/:cakeId', function(req, res) {
     cakeSchema.findOneAndUpdate({_id: req.params.cakeId},
@@ -77,6 +73,10 @@ router.get('/cakes', function(req, res) {
             res.send(err);
         } else {
             let cakeMap = [];
+            let links = {
+                'Back to start': 'http://localhost:8000/'
+            }
+            cakeMap.push(links);
             cakes.forEach(function(cake) {
                 let sort = cake.sortOfCake;
                 let link = 'http://localhost:8000/cakes/' + cake._id;
@@ -88,10 +88,8 @@ router.get('/cakes', function(req, res) {
             });
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(cakeMap, null, 4));
-
         }
     });
-
 });
 
 router.get('/cakes/:cakeId', function(req, res) {
@@ -99,6 +97,10 @@ router.get('/cakes/:cakeId', function(req, res) {
         if(err) {
             res.send(err);
         } else {
+            let link = {
+                'Back to start': 'http://localhost:8000/'
+            }
+            information.push(link)
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(information, null, 4));
         }
@@ -109,7 +111,8 @@ router.get('/bakers', function(req, res) {
     if(loggedIn === false) {
         let obj = {
             'message': 'You need to be logged in',
-            'link': 'http://localhost:8000/auth/github'
+            'link': 'http://localhost:8000/auth/github',
+            'back to start': 'http://localhost:8000/'
         };
         res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(obj, null, 4));
@@ -136,7 +139,8 @@ router.get('/bakers', function(req, res) {
 
                 let links = {
                     'Log out': 'http://localhost:8000/logOut',
-                    'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook'
+                    'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook',
+                    'back to start': 'http://localhost:8000/'
                 }
                 bakersMap.push(links);
 
@@ -178,13 +182,17 @@ router.get('/logOut', function(req, res) {
     res.send(JSON.stringify(info, null, 4));
 })
 
-
 router.get('/bakers/:bakerName/', function(req, res) {
     cakeSchema.find({baker: req.params.bakerName}, function(err, information) {
         if(err) {
             res.send(err);
         } else {
             let allCakes = [];
+            let links = {
+                'Log out': 'http://localhost:8000/logOut',
+                'Back to start': 'http://localhost:8000/'
+            }
+            allCakes.push(links);
             information.forEach(function(cake) {
                 let result = {
                     'baker': cake.baker,
@@ -199,7 +207,6 @@ router.get('/bakers/:bakerName/', function(req, res) {
     });
 });
 
-
 router.post('/webhook', function (req, res) {
     let Webhook = new webhook({
         url: req.body[0].url
@@ -212,8 +219,6 @@ router.post('/webhook', function (req, res) {
             res.send(result);
         }
     });
-
-
 });
 
 router.get('/:cakeId', function(req, res) {
