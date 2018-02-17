@@ -8,14 +8,23 @@ let events = require('events');
 let loggedIn = false;
 let eventEmitter = new events.EventEmitter();
 
-router.get('/', function(req, res) {   
-    let links = {
-        'All cakes': 'http://localhost:8000/cakes' ,
-        'All bakers': 'http://localhost:8000/bakers'
-    };
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(links, null, 4));
-
+router.get('/', function(req, res) {
+    if(loggedIn == true) {
+        let links = {
+            'All cakes': 'http://localhost:8000/cakes' ,
+            'All bakers': 'http://localhost:8000/bakers',
+            "Log out": "http://localhost:8000/logOut"
+        };
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(links, null, 4));
+    } else {
+        let links = {
+            'All cakes': 'http://localhost:8000/cakes' ,
+            'All bakers': 'http://localhost:8000/bakers'
+        };
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(links, null, 4));
+    }     
 }).post('/', function test(req, res) {
     let cake = new cakeSchema({
         sortOfCake: req.body[0].sortOfCake,
@@ -30,9 +39,7 @@ router.get('/', function(req, res) {
         if(err) {
             res.send(err);
         } else {
-            if(loggedIn == true) {
-                eventEmitter.emit('new', cake);
-            }     
+            eventEmitter.emit('new', cake);  
             res.send(result);
         }
     })
@@ -73,10 +80,18 @@ router.get('/cakes', function(req, res) {
             res.send(err);
         } else {
             let cakeMap = [];
-            let links = {
-                'Back to start': 'http://localhost:8000/'
-            }
-            cakeMap.push(links);
+            if(loggedIn == true) {
+                let links = {
+                    'Back to start': 'http://localhost:8000/',
+                    "Log out": "http://localhost:8000/logOut"
+                }
+                cakeMap.push(links);
+            } else {
+                let links = {
+                    'Back to start': 'http://localhost:8000/'
+                }
+                cakeMap.push(links);
+            }      
             cakes.forEach(function(cake) {
                 let sort = cake.sortOfCake;
                 let link = 'http://localhost:8000/cakes/' + cake._id;
@@ -97,10 +112,18 @@ router.get('/cakes/:cakeId', function(req, res) {
         if(err) {
             res.send(err);
         } else {
-            let link = {
-                'Back to start': 'http://localhost:8000/'
-            }
-            information.push(link)
+            if(loggedIn == true) {
+                let link = {
+                    'Back to start': 'http://localhost:8000/',
+                    "Log out": "http://localhost:8000/logOut"
+                }
+                information.push(link)
+            } else {
+                let link = {
+                    'Back to start': 'http://localhost:8000/'
+                }
+                information.push(link)
+            }           
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(information, null, 4));
         }
@@ -221,19 +244,8 @@ router.post('/webhook', function (req, res) {
     });
 });
 
-router.get('/:cakeId', function(req, res) {
-    cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
-        if(err) {
-            res.send(err);
-        } else {
-            res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(cake, null, 4));
-        }
-    });
-});
-
 router.get('/:userURL', function(req, res) {
-    webhook.findOne({url: req.params.userURL}, function(err) {
+    webhook.find({url: req.params.userURL}, function(err) {
         if(err) {
             res.send(err);
         } else {
@@ -253,6 +265,17 @@ router.get('/:userURL', function(req, res) {
                 res.send(JSON.stringify(info, null, 4));
             });
         } 
+    });
+});
+
+router.get('/:cakeId', function(req, res) {
+    cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
+        if(err) {
+            res.send(err);
+        } else {
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify(cake, null, 4));
+        }
     });
 });
 
