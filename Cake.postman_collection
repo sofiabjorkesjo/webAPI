@@ -1,0 +1,188 @@
+{
+	"id": "90f3998a-1053-da2d-ca38-a9b2a5bd2f71",
+	"name": "Cake",
+	"description": "API för ett bageri där man kan skapa tårtor",
+	"order": [
+		"212fdf65-69e6-65a0-3c03-70a2bbb2c2c4",
+		"755d2de3-6e7e-48e5-e7e0-86b8bf897ab2",
+		"17b2827e-48dd-8573-cdba-94dd7e26c96c",
+		"fcdc6d41-54ee-d3d4-8b35-24bafe79e967",
+		"10e1627d-9129-40dc-3cf4-72b01698708e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1519213633145,
+	"owner": "3658949",
+	"public": false,
+	"requests": [
+		{
+			"id": "10e1627d-9129-40dc-3cf4-72b01698708e",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/webhook",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "90f3998a-1053-da2d-ca38-a9b2a5bd2f71",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST /webhook",
+			"description": "Posta en url som man vill ha en webhook till",
+			"descriptionFormat": "html",
+			"time": 1519219351401,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"url\": \"http://159.203.165.169:8000/test\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "17b2827e-48dd-8573-cdba-94dd7e26c96c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/:cakeID",
+			"queryParams": [],
+			"pathVariables": {
+				"cakeID": ""
+			},
+			"pathVariableData": [
+				{
+					"key": "cakeID",
+					"value": ""
+				}
+			],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "90f3998a-1053-da2d-ca38-a9b2a5bd2f71",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT /:cakeId",
+			"description": "Uppdatera en tårta. Ändra :cakeId till det id som tårtan har",
+			"descriptionFormat": "html",
+			"time": 1519215789340,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"kladdkaka\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n        \n        \n\t}\t\n\t\n]"
+		},
+		{
+			"id": "212fdf65-69e6-65a0-3c03-70a2bbb2c2c4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "90f3998a-1053-da2d-ca38-a9b2a5bd2f71",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST /",
+			"description": "Skapa en ny tårta",
+			"descriptionFormat": "html",
+			"time": 1519213792464,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"kladdkaka\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n        \n        \n\t}\t\n\t\n]"
+		},
+		{
+			"id": "755d2de3-6e7e-48e5-e7e0-86b8bf897ab2",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "90f3998a-1053-da2d-ca38-a9b2a5bd2f71",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET /",
+			"description": "Hämta startsidan",
+			"descriptionFormat": "html",
+			"time": 1519214042412,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"kladdkaka\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n        \n        \n\t}\t\n\t\n]"
+		},
+		{
+			"id": "fcdc6d41-54ee-d3d4-8b35-24bafe79e967",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/:cakeID",
+			"queryParams": [],
+			"pathVariables": {
+				"cakeID": ""
+			},
+			"pathVariableData": [
+				{
+					"key": "cakeID",
+					"value": ""
+				}
+			],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "90f3998a-1053-da2d-ca38-a9b2a5bd2f71",
+			"data": [],
+			"dataMode": "raw",
+			"name": "DELETE /:cakeId",
+			"description": "Ta bort en tårta. Ändra :cakeId till det id som tårtan har",
+			"descriptionFormat": "html",
+			"time": 1519215851809,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"kladdkaka\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n        \n        \n\t}\t\n\t\n]"
+		}
+	]
+}

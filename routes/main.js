@@ -138,7 +138,7 @@ router.get('/bakers', function(req, res) {
             'back to start': 'http://localhost:8000/'
         };
         res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(obj, null, 4));
+        res.send(JSON.stringify(obj, null, 4));
     } else {
         cakeSchema.find({}, function(err, obj) {
             if(err) {
@@ -220,8 +220,7 @@ router.get('/bakers/:bakerName/', function(req, res) {
                 let result = {
                     'baker': cake.baker,
                     'cake': cake.sortOfCake
-                }
-               
+                }           
                 allCakes.push(result);
             });
             res.setHeader('Content-Type', 'application/json');
@@ -268,7 +267,7 @@ router.get('/:userURL', function(req, res) {
     });
 });
 
-router.get('/:cakeId', function(req, res) {
+router.get('/oneCake/:cakeId', function(req, res) {
     cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
         if(err) {
             res.send(err);
@@ -278,5 +277,7 @@ router.get('/:cakeId', function(req, res) {
         }
     });
 });
+
+
 
 module.exports = router;
