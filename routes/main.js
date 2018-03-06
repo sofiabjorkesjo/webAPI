@@ -22,6 +22,8 @@ router.get('/', function(req, res) {
     res.status(200).send(JSON.stringify(links, null, 4));    
 });
 
+
+
 router.get('/cakes', function(req, res) {
     cakeSchema.find({}, function(err, cakes) {
         if(err) {
@@ -46,6 +48,47 @@ router.get('/cakes', function(req, res) {
             res.status(200).send(JSON.stringify(cakeMap, null, 4));
         }
     });
+});
+
+router.get('/bakers', function(req, res) {
+    cakeSchema.find({}, function(err, obj) {
+        if(err) {
+            res.status(404).send(err);
+        } else {
+            var bakers = [];
+            function remove_duplicates(arr) {
+                var obj = {};
+                bakers = [];
+                for (var i = 0; i < arr.length; i++) {
+                    obj[arr[i].baker] = true;
+                }
+                for (var key in obj) {
+                    bakers.push(key);
+                }
+                return bakers;
+            }
+            remove_duplicates(obj);
+            let bakersMap = [];
+
+            let links = {
+                'Log out': 'http://localhost:8000/logOut',
+                'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook',
+                'back to start': 'http://localhost:8000/'
+            }
+            bakersMap.push(links);
+
+            bakers.forEach(function(name) {
+                let info = {
+                    'Baker': name,
+                    'All the bakers cakes': 'http://localhost:8000/bakers/' + name
+                }
+                bakersMap.push(info);
+            });
+               
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).send(JSON.stringify(bakersMap, null, 4));
+        }
+    })
 });
 
 
@@ -111,7 +154,7 @@ router.post('/authenticate', function(req, res) {
             }
         }
     })
-})
+});
 
 router.use(function(req, res, next) {
     let token = req.headers['x-access-token'];
@@ -150,7 +193,7 @@ router.post('/', function test(req, res) {
             res.status(500).send(err);
         } else {
             eventEmitter.emit('new', cake);  
-            res.status(200).send(result);
+            res.status(200).send({'message': 'cakes posted',result});
         }
     })
 });
@@ -204,46 +247,6 @@ router.get('/cakes/:cakeId', function(req, res) {
 });
 
 
-
-
-router.get('/bakers', function(req, res) {
-     cakeSchema.find({}, function(err, obj) {
-        if(err) {
-            res.status(500).send(err);
-        } else {
-            var bakers = [];
-            function remove_duplicates(arr) {
-                var obj = {};
-                bakers = [];
-                for (var i = 0; i < arr.length; i++) {
-                    obj[arr[i].baker] = true;
-                }
-                for (var key in obj) {
-                    bakers.push(key);                    }
-                    return bakers;
-                }
-            remove_duplicates(obj);
-            let bakersMap = [];
-
-            let links = {
-                 'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook',
-                 'back to start': 'http://localhost:8000/'
-            }
-            bakersMap.push(links);
-
-            bakers.forEach(function(name) {
-                let info = {
-                    'Baker': name,
-                    'All the bakers cakes': 'http://localhost:8000/bakers/' + name
-                }
-                bakersMap.push(info);
-            });
-   
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(bakersMap, null, 4));
-        }
-    })     
-});
 
 router.get('/bakers/:bakerName/', function(req, res) {
     cakeSchema.find({baker: req.params.bakerName}, function(err, information) {
