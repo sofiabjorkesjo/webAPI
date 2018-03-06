@@ -13,10 +13,10 @@ let eventEmitter = new events.EventEmitter();
 
 router.get('/', function(req, res) {
     let links = {
-        'All cakes': 'http://localhost:8000/cakes' ,
-        'All bakers': 'http://localhost:8000/bakers',
-        'Register': 'http://localhost:8000/register',
-        'Authenticate': 'http://localhost:8000/authenticate'
+        'All cakes': process.env.URL + '/cakes' ,
+        'All bakers': process.env.URL + '/bakers',
+        'Register': process.env.URL + '/register',
+        'Authenticate': process.env.URL + '/authenticate'
     };
     res.setHeader('Content-Type', 'application/json');
     res.status(200).send(JSON.stringify(links, null, 4));    
@@ -31,13 +31,13 @@ router.get('/cakes', function(req, res) {
         } else {
             let cakeMap = [];
             let links = {
-                'Back to start': 'http://localhost:8000/'
+                'Back to start': process.env.URL
             }
             cakeMap.push(links);
                 
             cakes.forEach(function(cake) {
                 let sort = cake.sortOfCake;
-                let link = 'http://localhost:8000/cakes/' + cake._id;
+                let link = process.env.URL + '/cakes/' + cake._id;
                 let obj = {
                     'sortOfCake': sort,
                     'more information': link
@@ -71,16 +71,15 @@ router.get('/bakers', function(req, res) {
             let bakersMap = [];
 
             let links = {
-                'Log out': 'http://localhost:8000/logOut',
-                'Post one url to this link to create a webhook to listen to posts of new cakes': 'http://localhost:8000/webhook',
-                'back to start': 'http://localhost:8000/'
+                'Post one url to this link to create a webhook to listen to posts of new cakes': process.env.URL + '/webhook',
+                'back to start': process.env.URL
             }
             bakersMap.push(links);
 
             bakers.forEach(function(name) {
                 let info = {
                     'Baker': name,
-                    'All the bakers cakes': 'http://localhost:8000/bakers/' + name
+                    'All the bakers cakes': process.env.URL + '/bakers/' + name
                 }
                 bakersMap.push(info);
             });
@@ -126,7 +125,7 @@ router.get('/register', function(req, res) {
             let error = err;
             res.status(500).send({'error': error})
         } else {
-            res.status(200).send({'message': 'Successful registered', 'Autenticate': 'http://localhost:8000/authenticate'})
+            res.status(200).send({'message': 'Successful registered', 'Autenticate': process.env.URL + '/authenticate'})
         }
     })
 });
@@ -150,7 +149,7 @@ router.post('/authenticate', function(req, res) {
                 let token = jwt.sign(payload, app.get('superSecret'), {
                     expiresIn: 1000
                 });
-                res.status(200).send({'message': 'send the token in headern as x-access-token', 'token': token, 'start': 'http://localhost:8000/'})
+                res.status(200).send({'message': 'send the token in headern as x-access-token', 'token': token, 'start': process.env.URL})
             }
         }
     })
@@ -171,8 +170,8 @@ router.use(function(req, res, next) {
     } else {
         return res.status(403).send({
             'message': 'You need to send a token',
-            'register': 'http://localhost:8000/register',
-            'Autenticate': 'http://localhost:8000/authenticate'
+            'register': process.env.URL + '/register',
+            'Autenticate': process.env.URL + '/authenticate'
         });
     }
 });
@@ -235,9 +234,9 @@ router.get('/cakes/:cakeId', function(req, res) {
             res.status(500).send(err);
         } else { 
             let link = {
-                'Back to start': 'http://localhost:8000/',
-                'Update this cake': 'http://localhost:8000/' + req.params.cakeId,
-                'Delete this cake': 'http://localhost:8000/' + req.params.cakeId
+                'Back to start': process.env.URL,
+                'Update this cake': process.env.URL + req.params.cakeId,
+                'Delete this cake': process.env.URL + req.params.cakeId
             }
             information.push(link)                
             res.setHeader('Content-Type', 'application/json');
@@ -255,7 +254,7 @@ router.get('/bakers/:bakerName/', function(req, res) {
         } else {
             let allCakes = [];
             let links = {
-                'Back to start': 'http://localhost:8000/'
+                'Back to start': process.env.URL
             }
             allCakes.push(links);
             information.forEach(function(cake) {
