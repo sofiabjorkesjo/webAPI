@@ -3,13 +3,13 @@
 let mongoose = require('mongoose');
 
 let cakeSchema = new mongoose.Schema({
-    sortOfCake: {type: String},
-    baker: {type: String},
-    aboutBaker: {type: String},
-    sizeOfCake: {type: String},
-    date: {type: String},
-    imageURL: {type: String},
-    ingredients: {type: String}
+    sortOfCake: {type: String, required: true},
+    baker: {type: String, required: true},
+    aboutBaker: {type: String, required: true},
+    sizeOfCake: {type: String, required: true},
+    date: {type: String, required: true},
+    imageURL: {type: String, required: true},
+    ingredients: {type: String, required: true}
 });
 
 let cake = mongoose.model('Cake', cakeSchema);
