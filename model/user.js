@@ -9,7 +9,7 @@ let userSchema = new mongoose.Schema({
     admin: {type: String}
 });
 
-userSchema.plugin(findOrCreate)
+userSchema.plugin(findOrCreate);
 
 let user = mongoose.model('User', userSchema);
 

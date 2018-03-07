@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
         'Authenticate': process.env.URL + '/authenticate'
     };
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).send(JSON.stringify(links, null, 4));    
+    res.status(200).send(JSON.stringify({'message': '200 OK. ', links}, null, 4));    
 });
 
 
@@ -45,7 +45,7 @@ router.get('/cakes', function(req, res) {
                 cakeMap.push(obj);
             });
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(cakeMap, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK. ', cakeMap}, null, 4));
         }
     });
 });
@@ -53,7 +53,7 @@ router.get('/cakes', function(req, res) {
 router.get('/bakers', function(req, res) {
     cakeSchema.find({}, function(err, obj) {
         if(err) {
-            res.status(404).send(err);
+            res.status(404).send({'message': '404 Not Found. ', err});
         } else {
             var bakers = [];
             function remove_duplicates(arr) {
@@ -85,7 +85,7 @@ router.get('/bakers', function(req, res) {
             });
                
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(bakersMap, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK. ', bakersMap}, null, 4));
         }
     })
 });
@@ -95,7 +95,7 @@ router.get('/bakers', function(req, res) {
 router.get('/:userURL', function(req, res) {
     webhook.find({url: req.params.userURL}, function(err) {
         if(err) {
-            res.status(404).send(err);
+            res.status(404).send({'message': '404 Not Found ', err});
         } else {
             eventEmitter.on('new', function(data) {
                 let info = [];
@@ -110,22 +110,22 @@ router.get('/:userURL', function(req, res) {
                 }
                 info.push(obj);
                 res.setHeader('Content-Type', 'application/json');
-                res.status(200).send(JSON.stringify(info, null, 4));
+                res.status(200).send(JSON.stringify({'message': '200 OK ', info}, null, 4));
             });
         } 
     });
 });
 
 router.get('/register', function(req, res) {
-    res.status(200).send({'message': 'You need to post username and passwprd to this route to reguster'})
+    res.status(200).send({'message': '200 OK. You need to post username and password to this route to reguster'})
 
 }).post('/register', function(req, res) {
     User.findOrCreate({username: req.body[0].username, password: req.body[0].password, admin: 'true'}, function(err, result){
         if (err) {
             let error = err;
-            res.status(500).send({'error': error})
+            res.status(500).send({'message': '500 Internal Server Error ', error})
         } else {
-            res.status(200).send({'message': 'Successful registered', 'Autenticate': process.env.URL + '/authenticate'})
+            res.status(200).send({'message': '200 OK. Successful registered', 'Autenticate': process.env.URL + '/authenticate'})
         }
     })
 });
@@ -135,13 +135,13 @@ router.post('/authenticate', function(req, res) {
         if(err) {
             if(!user) {
                 console.log('ingen user')
-                res.status(404).send({'message': 'write username'})
+                res.status(404).send({'message': '404 Not Found. Write username'})
             }
         } else {
             if(user === null) {
-                res.status(404).send({'message': 'no user found'})
+                res.status(404).send({'message': '404 Not Found. No user found'})
             } else if(user.password != req.body[0].password) {
-                res.status(404).send({'message': 'wrong password'})
+                res.status(404).send({'message': '404 Not Found. Wrong password'})
             } else {
                 let payload = {
                     admin: user.admin
@@ -149,7 +149,7 @@ router.post('/authenticate', function(req, res) {
                 let token = jwt.sign(payload, app.get('superSecret'), {
                     expiresIn: 1000
                 });
-                res.status(200).send({'message': 'send the token in headern as x-access-token', 'token': token, 'start': process.env.URL})
+                res.status(200).send({'message': '200 OK. Send the token in headern as x-access-token', 'token': token, 'start': process.env.URL})
             }
         }
     })
@@ -161,7 +161,7 @@ router.use(function(req, res, next) {
     if (token) {
         jwt.verify(token, app.get('superSecret'), function(err, decoded) {
             if (err) {
-                res.status(404).send(err);
+                res.status(404).send({'message': '404 Not Found.', err});
             } else {
                 req.decoded = decoded;
                 next();
@@ -169,7 +169,7 @@ router.use(function(req, res, next) {
         });
     } else {
         return res.status(403).send({
-            'message': 'You need to send a token',
+            'message': '403 Forbidden. You need to send a token',
             'register': process.env.URL + '/register',
             'Autenticate': process.env.URL + '/authenticate'
         });
@@ -189,10 +189,10 @@ router.post('/', function test(req, res) {
      });
     cake.save(function(err, result) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error.', err});
         } else {
             eventEmitter.emit('new', cake);  
-            res.status(200).send({'message': 'cakes posted',result});
+            res.status(200).send({'message': '200 OK. Cakes posted',result});
         }
     })
 });
@@ -208,11 +208,11 @@ router.put('/:cakeId', function(req, res) {
         {new: true},
         function(err, cake) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error ', err});
         } else {
             console.log(cake)
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify({'message': 'cake updated', cake}, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK. Cake updated', cake}, null, 4));
         }
     });
 });
@@ -220,10 +220,10 @@ router.put('/:cakeId', function(req, res) {
 router.delete('/:cakeId', function(req, res) {
     cakeSchema.findOneAndRemove({_id: req.params.cakeId}, function(err, cake) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error', err});
         } else {
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify({'message': 'cake deleted'}, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK. Cake deleted'}, null, 4));
         }
     });
 });
@@ -231,7 +231,7 @@ router.delete('/:cakeId', function(req, res) {
 router.get('/cakes/:cakeId', function(req, res) {
     cakeSchema.find({_id: req.params.cakeId}, function(err, information) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error ', err});
         } else { 
             let link = {
                 'Back to start': process.env.URL,
@@ -240,7 +240,7 @@ router.get('/cakes/:cakeId', function(req, res) {
             }
             information.push(link)                
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(information, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK ', information}, null, 4));
         }
     });
 });
@@ -250,7 +250,7 @@ router.get('/cakes/:cakeId', function(req, res) {
 router.get('/bakers/:bakerName/', function(req, res) {
     cakeSchema.find({baker: req.params.bakerName}, function(err, information) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error ', err});
         } else {
             let allCakes = [];
             let links = {
@@ -265,7 +265,7 @@ router.get('/bakers/:bakerName/', function(req, res) {
                 allCakes.push(result);
             });
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(allCakes, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK. ', allCakes}, null, 4));
         }
     });
 });
@@ -277,9 +277,9 @@ router.post('/webhook', function (req, res) {
 
     Webhook.save(function(err, result) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error ', err});
         } else {
-            res.status(200).send({'message': 'webhook saved', result});
+            res.status(200).send({'message': '200 OK. Webhook saved ', result});
         }
     });
 });
@@ -287,10 +287,10 @@ router.post('/webhook', function (req, res) {
 router.get('/oneCake/:cakeId', function(req, res) {
     cakeSchema.findOne({_id: req.params.cakeId}, function(err, cake) {
         if(err) {
-            res.status(500).send(err);
+            res.status(500).send({'message': '500 Internal Server Error ', err});
         } else {
             res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify(cake, null, 4));
+            res.status(200).send(JSON.stringify({'message': '200 OK ', cake}, null, 4));
         }
     });
 });
