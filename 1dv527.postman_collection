@@ -1,0 +1,567 @@
+{
+	"id": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+	"name": "1dv527",
+	"description": "Examination 2 1dv527",
+	"order": [
+		"538c9893-30f8-b599-86e7-06cf5bd7a458",
+		"c0d3d77a-8a62-5792-3f1a-e87835dfc7d2",
+		"35deb64a-68dd-1aa4-e5bd-ed4de9ff240c",
+		"4236cd4e-ae38-8e40-eaec-91c6cc12574a",
+		"fd5d316b-d0aa-ab1c-e0e4-241de7f812e1",
+		"6aa23364-080a-3f64-17ea-13813871f870",
+		"4cdf0053-3980-f243-8a77-66b6e00e7be1",
+		"467f5f20-2697-2336-23f9-02ef0e5bbd25",
+		"63b96977-8e30-ba8f-9809-2d72c078e55d",
+		"601373fb-2ae0-38df-cf2e-787775231eb4",
+		"73fded9b-174a-b881-becf-4d912d737e38",
+		"a361c2f5-135c-4398-cdbd-4d6aa6addd15",
+		"39658bea-7f16-f421-d7de-704c1ad45f0e",
+		"b6192442-64cc-1708-da82-10c24e8d9e67",
+		"ba271db6-b2e2-ec8c-894b-4177bd1209db"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1520333994539,
+	"owner": "3658949",
+	"public": false,
+	"requests": [
+		{
+			"id": "35deb64a-68dd-1aa4-e5bd-ed4de9ff240c",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/authenticate",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST (/authenticate)",
+			"description": "Fill in your registred username and password. If the response is successfull you get a temporary token in the response. Use the token to the request that requires autentication. Fill in the token in the header as an x-access-token value.",
+			"descriptionFormat": "html",
+			"time": 1520337437066,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+		},
+		{
+			"id": "39658bea-7f16-f421-d7de-704c1ad45f0e",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/cakes/5a8837381434bda2d09d9cda",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "FAIL PUT (/:cakeId)",
+			"description": "Update a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n\n",
+			"descriptionFormat": "html",
+			"time": 1520338481218,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "4236cd4e-ae38-8e40-eaec-91c6cc12574a",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzg4MDEsImV4cCI6MTUyMDMzOTgwMX0.4jN2btdKTKYKhhLe8B4HLCkvNxjAUK8XjCMbr1fPWbA\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzg4MDEsImV4cCI6MTUyMDMzOTgwMX0.4jN2btdKTKYKhhLe8B4HLCkvNxjAUK8XjCMbr1fPWbA",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/cakes/5a8713e61b4b95987e009ed4",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1520338816534,
+			"name": "GET (/cakes/:cakeId)",
+			"description": "Get more information about a cake. Change the :cakeId value to a cakes id. \n\nAuthentication is requried. Post your token in the header as an x-access-token value.",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"responses": [],
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+		},
+		{
+			"id": "467f5f20-2697-2336-23f9-02ef0e5bbd25",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST (/)",
+			"description": "Post a cake. Field aboutBaker and imageURL is not requried.\n\nAuthentication is requried. Post your token in the header as an x-access-token value.\n",
+			"descriptionFormat": "html",
+			"time": 1520338044420,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "4cdf0053-3980-f243-8a77-66b6e00e7be1",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/webhook",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST (/webhook)",
+			"description": "Post a url that you want webhooks to when a new cake is posted.\n\nAuthentication is requried. Post your token in the header as an x-access-token value.\n",
+			"descriptionFormat": "html",
+			"time": 1520337919328,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"url\": \"http://localhost:8000/testtest\"\n\t}\t\n]\n\n"
+		},
+		{
+			"id": "538c9893-30f8-b599-86e7-06cf5bd7a458",
+			"headers": "",
+			"headerData": [],
+			"url": "http://159.203.165.169:8000/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1520338753011,
+			"name": "GET (/)",
+			"description": "Get start page",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"responses": []
+		},
+		{
+			"id": "601373fb-2ae0-38df-cf2e-787775231eb4",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "DELETE (/:cakeId)",
+			"description": "Delete a cake. Change the :cakeId to the id of the cake you want to delete.\n\nAuthentication is requried. Post your token in the header as an x-access-token value.\n",
+			"descriptionFormat": "html",
+			"time": 1520338182017,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "63b96977-8e30-ba8f-9809-2d72c078e55d",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT (/:cakeId)",
+			"description": "Update a cake. Field aboutBaker and imageURL is not requried. Change the :cakeId to the id of the cake you want to update.\n\nAuthentication is requried. Post your token in the header as an x-access-token value.\n",
+			"descriptionFormat": "html",
+			"time": 1520338133161,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "6aa23364-080a-3f64-17ea-13813871f870",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/bakers/sofia",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET (/bakers/:baker)",
+			"description": "Get more information about a baker. Change the :baker value to the bakers name.\n\nAuthentication is requried. Post your token in the header as an x-access-token value.\n",
+			"descriptionFormat": "html",
+			"time": 1520337802898,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+		},
+		{
+			"id": "73fded9b-174a-b881-becf-4d912d737e38",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "FAIL POST (/)",
+			"description": "Post a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n",
+			"descriptionFormat": "html",
+			"time": 1520338353523,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "a361c2f5-135c-4398-cdbd-4d6aa6addd15",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/cakes",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET (/cakes)",
+			"description": "Get all the cakes",
+			"descriptionFormat": "html",
+			"time": 1520338413019,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+		},
+		{
+			"id": "b6192442-64cc-1708-da82-10c24e8d9e67",
+			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Expired token DELETE (/:cakeId)",
+			"description": "When your token is expired, you get an error. You then need to create a new token. ",
+			"descriptionFormat": "html",
+			"time": 1520338591357,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "ba271db6-b2e2-ec8c-894b-4177bd1209db",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzg1OTUsImV4cCI6MTUyMDMzOTU5NX0.OlQhKczCfuhcwdBhi989I7tIsEyxw6__qosfUUW7POw\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzg1OTUsImV4cCI6MTUyMDMzOTU5NX0.OlQhKczCfuhcwdBhi989I7tIsEyxw6__qosfUUW7POw",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "FAIL DELETE (/:cakeId)",
+			"description": "Delete a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n\n",
+			"descriptionFormat": "html",
+			"time": 1520338695311,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "c0d3d77a-8a62-5792-3f1a-e87835dfc7d2",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/register",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST (/register)",
+			"description": "Register a username and a password. Write a username and a password in the json object, where it says username and password",
+			"descriptionFormat": "html",
+			"time": 1520337269747,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+		},
+		{
+			"id": "fd5d316b-d0aa-ab1c-e0e4-241de7f812e1",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/bakers",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET (/bakers)",
+			"description": "Get all the bakers.\n",
+			"descriptionFormat": "html",
+			"time": 1520337708224,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+		}
+	]
+}
