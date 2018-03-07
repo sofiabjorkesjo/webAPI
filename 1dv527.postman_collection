@@ -4,7 +4,7 @@
 	"description": "Examination 2 1dv527",
 	"order": [
 		"538c9893-30f8-b599-86e7-06cf5bd7a458",
-		"c0d3d77a-8a62-5792-3f1a-e87835dfc7d2",
+		"6d7d815a-835f-fa56-f9c9-922ee142ecca",
 		"35deb64a-68dd-1aa4-e5bd-ed4de9ff240c",
 		"4236cd4e-ae38-8e40-eaec-91c6cc12574a",
 		"fd5d316b-d0aa-ab1c-e0e4-241de7f812e1",
@@ -17,7 +17,8 @@
 		"a361c2f5-135c-4398-cdbd-4d6aa6addd15",
 		"39658bea-7f16-f421-d7de-704c1ad45f0e",
 		"b6192442-64cc-1708-da82-10c24e8d9e67",
-		"ba271db6-b2e2-ec8c-894b-4177bd1209db"
+		"ba271db6-b2e2-ec8c-894b-4177bd1209db",
+		"820ba2b2-7c28-2789-cdac-09d13529fb75"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -44,23 +45,22 @@
 			],
 			"url": "http://159.203.165.169:8000/authenticate",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
 			"method": "POST",
-			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
 			"data": [],
 			"dataMode": "raw",
-			"name": "POST (/authenticate)",
-			"description": "Fill in your registred username and password. If the response is successfull you get a temporary token in the response. Use the token to the request that requires autentication. Fill in the token in the header as an x-access-token value.",
-			"descriptionFormat": "html",
-			"time": 1520337437066,
 			"version": 2,
-			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+			"time": 1520409687080,
+			"name": "POST (/authenticate)",
+			"description": "Fill in your registred username and password. If the response is successfull you get a temporary token in the response. Use the token to the request that requires autentication. Fill in the token in the header as an x-access-token value.",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"responses": [],
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"username\",\n\t\t\"password\": \"password\"\n        \n\t}\t\n]"
 		},
 		{
 			"id": "39658bea-7f16-f421-d7de-704c1ad45f0e",
@@ -342,6 +342,37 @@
 			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
 		},
 		{
+			"id": "6d7d815a-835f-fa56-f9c9-922ee142ecca",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://159.203.165.169:8000/register",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST (/register)",
+			"description": "Register a username and password. ",
+			"descriptionFormat": "html",
+			"time": 1520409669848,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"username\",\n\t\t\"password\": \"password\"\n        \n\t}\t\n]"
+		},
+		{
 			"id": "73fded9b-174a-b881-becf-4d912d737e38",
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
 			"headerData": [
@@ -377,6 +408,43 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+		},
+		{
+			"id": "820ba2b2-7c28-2789-cdac-09d13529fb75",
+			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://159.203.165.169:8000/authenticate",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"data": [],
+			"dataMode": "raw",
+			"name": "FAIL POST (/authenticate)",
+			"description": "The username or password does not exist. 404 Not found.",
+			"descriptionFormat": "html",
+			"time": 1520409754699,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "[\n\t{\n\t\t\"username\": \"finnsinte\",\n\t\t\"password\": \"finnsinte\"\n        \n\t}\t\n]"
 		},
 		{
 			"id": "a361c2f5-135c-4398-cdbd-4d6aa6addd15",
@@ -488,43 +556,6 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
-		},
-		{
-			"id": "c0d3d77a-8a62-5792-3f1a-e87835dfc7d2",
-			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "x-access-token",
-					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
-					"description": "",
-					"enabled": false
-				}
-			],
-			"url": "http://159.203.165.169:8000/register",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "POST (/register)",
-			"description": "Register a username and a password. Write a username and a password in the json object, where it says username and password",
-			"descriptionFormat": "html",
-			"time": 1520337269747,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
 		},
 		{
 			"id": "fd5d316b-d0aa-ab1c-e0e4-241de7f812e1",
