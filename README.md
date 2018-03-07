@@ -1,8 +1,7 @@
 För att starta koden:
 - Om man kör lokalt: 
-1. Gör en oauth app på github.
-2. Spara ner client_id och client_secret på oauth appen i en .env fil. Döp dom till CLIENT_ID och CLIENT_SECRET.
-3. starta node app.js i terminalen
+1. starta node app.js i terminalen
+2. Skapa en .env fil och skriv URL = localhost:8000
 
 - Om man går in på servern:
 1. Gå in på http://159.203.165.169:8000/
@@ -10,6 +9,8 @@ För att starta koden:
 Svar på frågorna
 
 1. Jag har implementerat HATEOAS som så att på första sidan så kan man välja mellan att gå vidare antingen till sidan cakes där man kan se alla tårtor som finns i bageriet, eller så kan man gå till sidan bakers där man ser alla bagare. Jag tycker det var ett bra sätt att starta eftersom min tanke med apiet är att det ska vara ett bageri, och det man vill se är förmodligen vilka tårtor som finns, samt vilka personer som jobbar där. När man ser alla kakorna, så kan man gå vidare till en enskild sida för alla specifika kakor där man kan se mer information om dem. Jag valde att göra så för att man är förmodligen bara intresserad av att se mer information om vissa tårtor och då känns det lätt att gå in på dem enskilt. Går man in på sidan bakers så måste man logga in för att kunna se alla bagare. När man har loggat in så listats alla bagare. Man kan då även gå vidare till varsin enskild sida där alla tårtor som den bagaren har bakat finns listade. Detta tycker jag känns tydligt och bra eftersom om man är intresserade av att att vilka som jobbar där så är man nog också intresserad av att se vilka tårtor som just dem har bakat. När man är inloggad så finns det också en länk till att logga ut. På varje sida så finns det en länk tillbaka till startsidan. Det finns också en länk att posta till när man vill göra en webhook.
+
+Jag har även lagt till hateoas till varje cake. Länkar till att uppdatera och radera den specifika tårtan.
 
 2. Då skulle jag sätta så att man kan välja i koden när man sätter content-type, till vilken man vill ha. Om de är json så blir de json exempelvis. Så man får välja vilken typ man vill ha.
 

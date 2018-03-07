@@ -235,8 +235,8 @@ router.get('/cakes/:cakeId', function(req, res) {
         } else { 
             let link = {
                 'Back to start': process.env.URL,
-                'Update this cake': process.env.URL + req.params.cakeId,
-                'Delete this cake': process.env.URL + req.params.cakeId
+                'Update this cake': process.env.URL + '/' + req.params.cakeId,
+                'Delete this cake': process.env.URL + '/' + req.params.cakeId
             }
             information.push(link)                
             res.setHeader('Content-Type', 'application/json');
