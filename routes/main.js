@@ -139,9 +139,9 @@ router.post('/authenticate', function(req, res) {
             }
         } else {
             if(user === null) {
-                res.status(404).send({'message': '404 Not Found. No user found'})
+                res.status(401).send({'message': '401 Unauthorized'})
             } else if(user.password != req.body[0].password) {
-                res.status(404).send({'message': '404 Not Found. Wrong password'})
+                res.status(401).send({'message': '401 Unauthorized'})
             } else {
                 let payload = {
                     admin: user.admin
@@ -161,7 +161,7 @@ router.use(function(req, res, next) {
     if (token) {
         jwt.verify(token, app.get('superSecret'), function(err, decoded) {
             if (err) {
-                res.status(404).send({'message': '404 Not Found.', err});
+                res.status(401).send({'message': '401. Unauthorized', err});
             } else {
                 req.decoded = decoded;
                 next();
@@ -189,7 +189,7 @@ router.post('/', function test(req, res) {
      });
     cake.save(function(err, result) {
         if(err) {
-            res.status(500).send({'message': '500 Internal Server Error.', err});
+            res.status(404).send({'message': 'Bad request', err});
         } else {
             eventEmitter.emit('new', cake);  
             res.status(200).send({'message': '200 OK. Cakes posted',result});
@@ -208,11 +208,21 @@ router.put('/:cakeId', function(req, res) {
         {new: true},
         function(err, cake) {
         if(err) {
+            console.log('EROROORORO');
+            console.log(err);
             res.status(500).send({'message': '500 Internal Server Error ', err});
         } else {
-            console.log(cake)
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).send(JSON.stringify({'message': '200 OK. Cake updated', cake}, null, 4));
+            if(cake.ingredients === null && cake.imageURL === null && cake.date === null && cake.sizeOfCake === null && cake.baker === null && cake.sortOfCake === null) {
+                res.status(400).send({'message': '400. Bad request.'})
+            } else if (cake.baker === "" || cake.sortOfCake === "" || cake.sizeOfCake === "" || cake.date === "" || cake.ingredients === "" || cake.aboutBaker === "" || cake.imageURL === "") {
+                res.status(400).send({'message': '400. Bad request.'})
+            } else if (cake.baker === null || cake.sortOfCake === null || cake.sizeOfCake === null || cake.date === null || cake.ingredients === null) {
+                res.status(400).send({'message': '400. Bad request.'})
+            } else {
+                res.setHeader('Content-Type', 'application/json');
+                res.status(200).send(JSON.stringify({'message': '200 OK. Cake updated', cake}, null, 4));
+            }
+          
         }
     });
 });
