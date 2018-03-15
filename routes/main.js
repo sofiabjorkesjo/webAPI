@@ -189,7 +189,7 @@ router.post('/', function test(req, res) {
      });
     cake.save(function(err, result) {
         if(err) {
-            res.status(404).send({'message': 'Bad request', err});
+            res.status(404).send({'message': '404 Bad request', err});
         } else {
             eventEmitter.emit('new', cake);  
             res.status(200).send({'message': '200 OK. Cakes posted',result});
