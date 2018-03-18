@@ -18,7 +18,11 @@
 		"39658bea-7f16-f421-d7de-704c1ad45f0e",
 		"b6192442-64cc-1708-da82-10c24e8d9e67",
 		"ba271db6-b2e2-ec8c-894b-4177bd1209db",
-		"820ba2b2-7c28-2789-cdac-09d13529fb75"
+		"820ba2b2-7c28-2789-cdac-09d13529fb75",
+		"8c57a90f-2be6-5d61-1273-be4d1af76354",
+		"00b60f67-77bf-b8fb-34e7-43fc52345354",
+		"6d054a7c-b29e-b5b0-8539-b919e86f1669",
+		"142be5b9-7d4a-c411-ad41-4dec1ee2288d"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -27,20 +31,94 @@
 	"public": false,
 	"requests": [
 		{
+			"folder": null,
+			"id": "00b60f67-77bf-b8fb-34e7-43fc52345354",
+			"name": "PUT FAIL (/:cakeId)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "When a propertie is missspelled  you get 400 Bad request in response. ",
+			"variables": null,
+			"headers": "x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE\nContent-Type: application/json\n",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/5a8d6067ac13eedd92eb1274",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"rawModeData": "[\n  {\n    \"sortOf\": \"testar\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"februari\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n  }  \n]\n"
+		},
+		{
+			"folder": null,
+			"id": "142be5b9-7d4a-c411-ad41-4dec1ee2288d",
+			"name": "POST FAIL (/)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "When you post a misspelled propertie you get a 400 bad request in response.",
+			"variables": null,
+			"headers": "x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE\nContent-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"rawModeData": "[\n  {\n    \"sortOf\": \"testar\",\n        \"baker\": \"sofiavvv\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"februari\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n        \n        \n  }  \n  \n]\n"
+		},
+		{
 			"id": "35deb64a-68dd-1aa4-e5bd-ed4de9ff240c",
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
-					"description": "",
-					"enabled": false
+					"enabled": false,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/authenticate",
@@ -53,14 +131,20 @@
 			"dataMode": "raw",
 			"version": 2,
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
+			"currentHelper": null,
+			"helperAttributes": null,
 			"time": 1520409687080,
 			"name": "POST (/authenticate)",
 			"description": "Fill in your registred username and password. If the response is successfull you get a temporary token in the response. Use the token to the request that requires autentication. Fill in the token in the header as an x-access-token value.",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
 			"responses": [],
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"username\",\n\t\t\"password\": \"password\"\n        \n\t}\t\n]"
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"username\": \"username\",\n    \"password\": \"password\"\n        \n  }  \n]"
 		},
 		{
 			"id": "39658bea-7f16-f421-d7de-704c1ad45f0e",
@@ -69,14 +153,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
-					"description": "",
-					"enabled": false
+					"enabled": false,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/cakes/5a8837381434bda2d09d9cda",
@@ -95,9 +179,14 @@
 			"version": 2,
 			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
 			"id": "4236cd4e-ae38-8e40-eaec-91c6cc12574a",
@@ -106,14 +195,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzg4MDEsImV4cCI6MTUyMDMzOTgwMX0.4jN2btdKTKYKhhLe8B4HLCkvNxjAUK8XjCMbr1fPWbA",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/cakes/5a8713e61b4b95987e009ed4",
@@ -125,14 +214,20 @@
 			"data": [],
 			"dataMode": "raw",
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
+			"currentHelper": null,
+			"helperAttributes": null,
 			"time": 1520338816534,
 			"name": "GET (/cakes/:cakeId)",
 			"description": "Get more information about a cake. Change the :cakeId value to a cakes id. \n\nAuthentication is requried. Post your token in the header as an x-access-token value.",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
 			"responses": [],
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"username\": \"password\"\n        \n  }  \n]\n"
 		},
 		{
 			"id": "467f5f20-2697-2336-23f9-02ef0e5bbd25",
@@ -141,14 +236,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/",
@@ -167,9 +262,14 @@
 			"version": 2,
 			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
 			"id": "4cdf0053-3980-f243-8a77-66b6e00e7be1",
@@ -178,14 +278,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/webhook",
@@ -204,9 +304,14 @@
 			"version": 2,
 			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"url\": \"http://localhost:8000/testtest\"\n\t}\t\n]\n\n"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"url\": \"http://localhost:8000/testtest\"\n  }  \n]\n\n"
 		},
 		{
 			"id": "538c9893-30f8-b599-86e7-06cf5bd7a458",
@@ -222,13 +327,20 @@
 			"dataMode": "params",
 			"version": 2,
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
+			"currentHelper": null,
+			"helperAttributes": null,
 			"time": 1520338753011,
 			"name": "GET (/)",
 			"description": "Get start page",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"responses": []
+			"responses": [],
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"variables": null
 		},
 		{
 			"id": "601373fb-2ae0-38df-cf2e-787775231eb4",
@@ -237,14 +349,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
@@ -263,9 +375,14 @@
 			"version": 2,
 			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
 			"id": "63b96977-8e30-ba8f-9809-2d72c078e55d",
@@ -274,14 +391,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
@@ -300,9 +417,14 @@
 			"version": 2,
 			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
 			"id": "6aa23364-080a-3f64-17ea-13813871f870",
@@ -311,14 +433,14 @@
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M",
-					"description": "",
-					"enabled": true
+					"enabled": true,
+					"description": ""
 				}
 			],
 			"url": "http://159.203.165.169:8000/bakers/sofia",
@@ -337,13 +459,73 @@
 			"version": 2,
 			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"folder": null,
+			"timestamp": null,
+			"auth": null,
+			"events": null,
+			"variables": null,
+			"rawModeData": "[\n  {\n    \"username\": \"password\"\n        \n  }  \n]\n"
 		},
 		{
+			"folder": null,
+			"id": "6d054a7c-b29e-b5b0-8539-b919e86f1669",
+			"name": "PUT FAIL (/:cakeId)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "When you send a empty object you get a 400 bad request in response.",
+			"variables": null,
+			"headers": "x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE\nContent-Type: application/json\n",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/5a8d6067ac13eedd92eb1274",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"rawModeData": "[\n  {\n\n  }  \n]\n"
+		},
+		{
+			"folder": null,
 			"id": "6d7d815a-835f-fa56-f9c9-922ee142ecca",
+			"name": "POST (/register)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "Register a username and password. ",
+			"variables": null,
 			"headers": "Content-Type: application/json\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/register",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -352,29 +534,30 @@
 					"enabled": true
 				}
 			],
-			"url": "http://159.203.165.169:8000/register",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "POST (/register)",
-			"description": "Register a username and password. ",
-			"descriptionFormat": "html",
-			"time": 1520409669848,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"username\",\n\t\t\"password\": \"password\"\n        \n\t}\t\n]"
+			"rawModeData": "[\n  {\n    \"username\": \"username\",\n    \"password\": \"password\"\n        \n  }  \n]"
 		},
 		{
 			"id": "73fded9b-174a-b881-becf-4d912d737e38",
+			"folder": null,
+			"name": "FAIL POST (/)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "Post a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n",
+			"variables": null,
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -389,66 +572,102 @@
 					"enabled": false
 				}
 			],
-			"url": "http://159.203.165.169:8000/",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "FAIL POST (/)",
-			"description": "Post a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n",
-			"descriptionFormat": "html",
-			"time": 1520338353523,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
+			"folder": null,
 			"id": "820ba2b2-7c28-2789-cdac-09d13529fb75",
+			"name": "FAIL POST (/authenticate)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "The username or password does not exist. 404 Not found.",
+			"variables": null,
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/authenticate",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
-					"description": "",
 					"enabled": true
 				},
 				{
 					"key": "x-access-token",
 					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY",
-					"description": "",
 					"enabled": false
 				}
 			],
-			"url": "http://159.203.165.169:8000/authenticate",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
+			"rawModeData": "[\n  {\n    \"username\": \"finnsinte\",\n    \"password\": \"finnsinte\"\n        \n  }  \n]"
+		},
+		{
+			"folder": null,
+			"id": "8c57a90f-2be6-5d61-1273-be4d1af76354",
+			"name": "PUT FAIL (/:cakeId)",
 			"dataMode": "raw",
-			"name": "FAIL POST (/authenticate)",
-			"description": "The username or password does not exist. 404 Not found.",
+			"data": [],
+			"auth": null,
+			"events": null,
 			"descriptionFormat": "html",
-			"time": 1520409754699,
-			"version": 2,
-			"responses": [],
+			"description": "When a propertie that is reuired is empty you get 400 Bad request in response. ",
+			"variables": null,
+			"headers": "x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE\nContent-Type: application/json\n",
+			"method": "PUT",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/5a8d6067ac13eedd92eb1274",
+			"preRequestScript": null,
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"finnsinte\",\n\t\t\"password\": \"finnsinte\"\n        \n\t}\t\n]"
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "x-access-token",
+					"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjExMjQxMjEsImV4cCI6MTUyMTEyNTEyMX0.qV0yuvmSh0bHF1ehY1GrL8K17uC2wG9nOlrDURX8nRE",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true
+				}
+			],
+			"pathVariableData": [],
+			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"testar\",\n        \"baker\": \"\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"februari\",\n        \"imageURL\": \"testar\",\n        \"ingredients\": \"choklad, socker, marränger\"\n  }  \n]\n"
 		},
 		{
 			"id": "a361c2f5-135c-4398-cdbd-4d6aa6addd15",
+			"folder": null,
+			"name": "GET (/cakes)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "Get all the cakes",
+			"variables": null,
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzQ5MjQsImV4cCI6MTUyMDMzNTkyNH0.8-FBEg8fW0iws9RcLY_sRUlqnDT-ARFC7Joulq6KWzY\n",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/cakes",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -463,29 +682,30 @@
 					"enabled": false
 				}
 			],
-			"url": "http://159.203.165.169:8000/cakes",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "GET (/cakes)",
-			"description": "Get all the cakes",
-			"descriptionFormat": "html",
-			"time": 1520338413019,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+			"rawModeData": "[\n  {\n    \"username\": \"password\"\n        \n  }  \n]\n"
 		},
 		{
 			"id": "b6192442-64cc-1708-da82-10c24e8d9e67",
+			"folder": null,
+			"name": "Expired token DELETE (/:cakeId)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "When your token is expired, you get an error. You then need to create a new token. ",
+			"variables": null,
 			"headers": "Content-Type: application/json\nx-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -500,29 +720,30 @@
 					"enabled": true
 				}
 			],
-			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "DELETE",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "Expired token DELETE (/:cakeId)",
-			"description": "When your token is expired, you get an error. You then need to create a new token. ",
-			"descriptionFormat": "html",
-			"time": 1520338591357,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"prinsesstårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
 			"id": "ba271db6-b2e2-ec8c-894b-4177bd1209db",
+			"folder": null,
+			"name": "FAIL DELETE (/:cakeId)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "Delete a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n\n",
+			"variables": null,
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzg1OTUsImV4cCI6MTUyMDMzOTU5NX0.OlQhKczCfuhcwdBhi989I7tIsEyxw6__qosfUUW7POw\n",
+			"method": "DELETE",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -537,29 +758,30 @@
 					"enabled": false
 				}
 			],
-			"url": "http://159.203.165.169:8000/5a9e844623b5cf7f12f2d56a",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "DELETE",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "FAIL DELETE (/:cakeId)",
-			"description": "Delete a cake - fail because you do not post a token.\n\nWhen you do not send a token in the header, you get a error as response that says that you need to post a token.\n\n",
-			"descriptionFormat": "html",
-			"time": 1520338695311,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n\t}\t\n\t\n]"
+			"rawModeData": "[\n  {\n    \"sortOfCake\": \"chokladtårta\",\n        \"baker\": \"sofia\",\n        \"sizeOfCake\": \"liten\",\n        \"date\": \"mars\",\n        \"imageURL\": \"testar.jpg\",\n        \"ingredients\": \"choklad, socker, marränger, marsipan\"\n  }  \n  \n]"
 		},
 		{
 			"id": "fd5d316b-d0aa-ab1c-e0e4-241de7f812e1",
+			"folder": null,
+			"name": "GET (/bakers)",
+			"dataMode": "raw",
+			"data": [],
+			"auth": null,
+			"events": null,
+			"descriptionFormat": "html",
+			"description": "Get all the bakers.\n",
+			"variables": null,
 			"headers": "Content-Type: application/json\n//x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6InRydWUiLCJpYXQiOjE1MjAzMzc1MTcsImV4cCI6MTUyMDMzODUxN30.0tVRYI_UzcKYjYJbtC1GRMrH2PqVJh6gPXGONONf7_M\n",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "http://159.203.165.169:8000/bakers",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -574,25 +796,9 @@
 					"enabled": false
 				}
 			],
-			"url": "http://159.203.165.169:8000/bakers",
-			"queryParams": [],
-			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
 			"collectionId": "07c3e4b2-a5ef-0baf-28e6-73e2aa96d986",
-			"data": [],
-			"dataMode": "raw",
-			"name": "GET (/bakers)",
-			"description": "Get all the bakers.\n",
-			"descriptionFormat": "html",
-			"time": 1520337708224,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"rawModeData": "[\n\t{\n\t\t\"username\": \"password\"\n        \n\t}\t\n]\n"
+			"rawModeData": "[\n  {\n    \"username\": \"password\"\n        \n  }  \n]\n"
 		}
 	]
 }
